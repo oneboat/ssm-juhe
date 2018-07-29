@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.learn.ssm.parent</groupId>
+		<artifactId>ssm-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.learn</groupId>
+	<artifactId>ssm-manager</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<description>这是一个子聚合的项目，依赖于ssm-parent</description>
+	<dependencies>
+	<!--依赖通用工具项目，因为需要调用里面的jar包  -->
+		<dependency>
+			<groupId>com.learn</groupId>
+			<artifactId>ssm-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>ssm-manager-pojo</module>
+		<module>ssm-manager-dao</module>
+		<module>ssm-manager-interface</module>
+		<module>ssm-manager-service</module>
+		<module>ssm-manager-web</module>
+	</modules>
+	<!-- 配置tomcat插件 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+				<!-- 端口 -->
+					<port>8080</port>
+					<!-- /表示工程名 -->
+					<path>/</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
